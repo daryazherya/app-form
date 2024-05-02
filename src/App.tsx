@@ -20,8 +20,10 @@ function App() {
             const copy = { ...prev };
 
             for (const dependency in dependencies) {
-                if (Object.values(copy).every(value => value !== null)) {
+                if (Object.values(copy).every(value => value !== null) && 
+                    dependencies[keyName].includes(dependency as InputKey)) {
                     copy[dependency as InputKey] = null;
+                    
                 }
                 if (dependencies[keyName].includes(dependency as InputKey)) {
                     copy[dependency as InputKey] = null;
@@ -31,6 +33,7 @@ function App() {
             return copy
         })
     }
+    console.log(selectValues, 'lll')
 
 
     return (
